@@ -6,3 +6,5 @@
 - add git build action and see what is the built version
     - copy `.github`
     - add `base` to `vite.config.js`
+    - it seems like if I build the one-file version, the github page is also one file version
+        - not critical for this usage
