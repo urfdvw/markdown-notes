@@ -1,0 +1,44 @@
+{
+    "global": { "tabEnableClose": false },
+    "borders": [
+        {
+            "type": "border",
+            "location": "left",
+            "size": 100,
+            "children": [
+                { "type": "tab", "name": "five", "component": "panel" }
+            ]
+        },
+        {
+            "type": "border",
+            "location": "bottom",
+            "size": 100,
+            "children": [
+                { "type": "tab", "name": "four", "component": "panel" }
+            ]
+        }
+    ],
+    "layout": {
+        "type": "row",
+        "weight": 100,
+        "children": [
+            {
+                "type": "tabset",
+                "weight": 50,
+                "selected": 0,
+                "children": [
+                    { "type": "tab", "name": "One", "component": "panel" }
+                ]
+            },
+            {
+                "type": "tabset",
+                "weight": 50,
+                "selected": 0,
+                "children": [
+                    { "type": "tab", "name": "Two", "component": "panel" },
+                    { "type": "tab", "name": "Three", "component": "panel" }
+                ]
+            }
+        ]
+    }
+}
