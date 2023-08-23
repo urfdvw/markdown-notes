@@ -3,18 +3,10 @@
     "borders": [
         {
             "type": "border",
-            "location": "left",
+            "location": "right",
             "size": 100,
             "children": [
-                { "type": "tab", "name": "five", "component": "panel" }
-            ]
-        },
-        {
-            "type": "border",
-            "location": "bottom",
-            "size": 100,
-            "children": [
-                { "type": "tab", "name": "four", "component": "panel" }
+                { "type": "tab", "name": "md preview", "component": "preview" }
             ]
         }
     ],
@@ -27,7 +19,7 @@
                 "weight": 50,
                 "selected": 0,
                 "children": [
-                    { "type": "tab", "name": "One", "component": "panel" }
+                    { "type": "tab", "name": "One", "component": "editor" }
                 ]
             },
             {
@@ -35,8 +27,8 @@
                 "weight": 50,
                 "selected": 0,
                 "children": [
-                    { "type": "tab", "name": "Two", "component": "panel" },
-                    { "type": "tab", "name": "Three", "component": "panel" }
+                    { "type": "tab", "name": "Two", "component": "editor" },
+                    { "type": "tab", "name": "Three", "component": "editor" }
                 ]
             }
         ]

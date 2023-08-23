@@ -4,14 +4,15 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-markdown";
 import "ace-builds/src-noconflict/theme-cloud9_day";
 import "ace-builds/src-noconflict/ext-language_tools";
+import ReactMarkdown from "react-markdown";
 import layout from "./layout.json";
 
 function App() {
-    const [model, setModel] = useState();
+    const [model, setModel] = useState(FlexLayout.Model.fromJson(layout));
 
     const factory = (node) => {
         var component = node.getComponent();
-        if (component === "panel") {
+        if (component === "editor") {
             return (
                 <div className="tab_content">
                     <AceEditor
@@ -24,15 +25,16 @@ function App() {
                     />
                 </div>
             );
+        } else if (component === "preview") {
+            return (
+                <div className="tab_content">
+                    <ReactMarkdown># Hello, *world*!</ReactMarkdown>
+                </div>
+            );
         }
     };
 
-    return (
-        <FlexLayout.Layout
-            model={FlexLayout.Model.fromJson(layout)}
-            factory={factory}
-        />
-    );
+    return <FlexLayout.Layout model={model} factory={factory} />;
 }
 
 export default App;

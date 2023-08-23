@@ -10,6 +10,7 @@
     -   it seems like if I build the one-file version, the github page is also one file version
         -   not critical for this usage
 -   `npm install react-ace ace-builds`
+-   `npm install react-markdown`
 
 # insights
 
