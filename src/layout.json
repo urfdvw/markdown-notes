@@ -1,13 +1,15 @@
 {
     "global": {
         "tabEnableClose": true,
-        "tabEnableFloat": true
+        "tabEnableFloat": true,
+        "rootOrientationVertical": true
     },
     "borders": [
         {
             "type": "border",
             "location": "right",
-            "size": 100,
+            "size": 300,
+            "selected": 0,
             "children": [
                 { "type": "tab", "name": "md preview", "component": "preview" }
             ]

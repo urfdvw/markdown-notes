@@ -11,6 +11,7 @@
         -   not critical for this usage
 -   `npm install react-ace ace-builds`
 -   `npm install react-markdown`
+-   `npm install remark-gfm`
 
 # insights
 

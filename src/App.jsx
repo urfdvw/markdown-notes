@@ -5,10 +5,12 @@ import "ace-builds/src-noconflict/mode-markdown";
 import "ace-builds/src-noconflict/theme-cloud9_day";
 import "ace-builds/src-noconflict/ext-language_tools";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import layout from "./layout.json";
 
 function App() {
     const [model, setModel] = useState(FlexLayout.Model.fromJson(layout));
+    const [text, setText] = useState("# Hello, *world*!");
 
     const factory = (node) => {
         var component = node.getComponent();
@@ -22,13 +24,20 @@ function App() {
                         editorProps={{ $blockScrolling: true }}
                         width="100%"
                         height="100%"
+                        value={text}
+                        onChange={(newValue) => {
+                            setText(newValue);
+                        }}
                     />
                 </div>
             );
         } else if (component === "preview") {
             return (
                 <div className="tab_content">
-                    <ReactMarkdown># Hello, *world*!</ReactMarkdown>
+                    <ReactMarkdown
+                        remarkPlugins={[remarkGfm]}
+                        children={text}
+                    />
                 </div>
             );
         }
