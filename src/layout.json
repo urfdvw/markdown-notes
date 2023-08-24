@@ -1,5 +1,8 @@
 {
-    "global": { "tabEnableClose": false },
+    "global": {
+        "tabEnableClose": true,
+        "tabEnableFloat": true
+    },
     "borders": [
         {
             "type": "border",
