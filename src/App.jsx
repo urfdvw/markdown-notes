@@ -9,6 +9,10 @@ import remarkGfm from "remark-gfm";
 import layout from "./layout.json";
 
 function App() {
+    if (window.location.pathname === "/popout") {
+        console.log("popout window opened");
+        return null;
+    }
     const [model, setModel] = useState(FlexLayout.Model.fromJson(layout));
     const [text, setText] = useState("# Hello, *world*!");
 
@@ -34,16 +38,21 @@ function App() {
         } else if (component === "preview") {
             return (
                 <div className="tab_content">
-                    <ReactMarkdown
-                        remarkPlugins={[remarkGfm]}
-                        children={text}
-                    />
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {text}
+                    </ReactMarkdown>
                 </div>
             );
         }
     };
-
-    return <FlexLayout.Layout model={model} factory={factory} />;
+    return (
+        <FlexLayout.Layout
+            model={model}
+            factory={factory}
+            supportsPopout={true}
+            popoutURL="popout"
+        />
+    );
 }
 
 export default App;
