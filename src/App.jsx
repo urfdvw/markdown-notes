@@ -9,7 +9,8 @@ import remarkGfm from "remark-gfm";
 import layout from "./layout.json";
 
 function App() {
-    if (window.location.pathname === "/popout") {
+    const queryParameters = new URLSearchParams(window.location.search);
+    if (queryParameters.get("popout") === "true") {
         console.log("popout window opened");
         return null;
     }
@@ -50,7 +51,7 @@ function App() {
             model={model}
             factory={factory}
             supportsPopout={true}
-            popoutURL="popout"
+            popoutURL="index.html?popout=true"
         />
     );
 }
