@@ -9,11 +9,6 @@ import remarkGfm from "remark-gfm";
 import layout from "./layout.json";
 
 function App() {
-    const queryParameters = new URLSearchParams(window.location.search);
-    if (queryParameters.get("popout") === "true") {
-        console.log("popout window opened");
-        return null;
-    }
     const [model, setModel] = useState(FlexLayout.Model.fromJson(layout));
     const [text, setText] = useState("# Hello, *world*!");
 
@@ -46,14 +41,8 @@ function App() {
             );
         }
     };
-    return (
-        <FlexLayout.Layout
-            model={model}
-            factory={factory}
-            supportsPopout={true}
-            popoutURL="index.html?popout=true"
-        />
-    );
+
+    return <FlexLayout.Layout model={model} factory={factory} />;
 }
 
 export default App;

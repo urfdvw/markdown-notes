@@ -16,3 +16,7 @@
 # insights
 
 -   top border divide the screen first
+- popout window will not work anyway without a server(single file)
+    - html parameter or routing will not work
+    - seeking to build single html file with selected feature function 
+    - web deployed version do not use single file build
