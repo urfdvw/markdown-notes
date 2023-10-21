@@ -7,12 +7,17 @@
     "borders": [
         {
             "type": "border",
+            "location": "left",
+            "size": 300,
+            "selected": 0,
+            "children": [{ "type": "tab", "name": "Folder", "component": "folder_view" }]
+        },
+        {
+            "type": "border",
             "location": "right",
             "size": 300,
             "selected": 0,
-            "children": [
-                { "type": "tab", "name": "md preview", "component": "preview" }
-            ]
+            "children": [{ "type": "tab", "name": "Preview", "component": "preview" }]
         }
     ],
     "layout": {
@@ -23,18 +28,7 @@
                 "type": "tabset",
                 "weight": 50,
                 "selected": 0,
-                "children": [
-                    { "type": "tab", "name": "One", "component": "editor" }
-                ]
-            },
-            {
-                "type": "tabset",
-                "weight": 50,
-                "selected": 0,
-                "children": [
-                    { "type": "tab", "name": "Two", "component": "editor" },
-                    { "type": "tab", "name": "Three", "component": "editor" }
-                ]
+                "children": []
             }
         ]
     }

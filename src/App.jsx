@@ -9,10 +9,25 @@ import remarkGfm from "remark-gfm";
 import layout from "./layout.json";
 import build_config from "../build-config.json";
 layout.global.tabEnableFloat = !build_config["single-file"];
+import FolderView, { useFileSystem, getFileText } from "react-local-file-system";
 
 function App() {
     const [model, setModel] = useState(FlexLayout.Model.fromJson(layout));
     const [text, setText] = useState("# Hello, *world*!");
+
+    const { openDirectory, directoryReady, statusText, rootDirHandle } = useFileSystem();
+
+    async function onFileClick(fileHandle) {
+        console.log("file content of", fileHandle.name, ":", await getFileText(fileHandle));
+        model.doAction(
+            FlexLayout.Actions.addNode(
+                { type: "tab", name: fileHandle.name, component: "editor" },
+                model.getActiveTabset().getId(),
+                FlexLayout.DockLocation.CENTER,
+                -1
+            )
+        );
+    }
 
     const factory = (node) => {
         var component = node.getComponent();
@@ -36,10 +51,17 @@ function App() {
         } else if (component === "preview") {
             return (
                 <div className="tab_content">
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                        {text}
-                    </ReactMarkdown>
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
                 </div>
+            );
+        } else if (component === "folder_view") {
+            return directoryReady ? (
+                <FolderView rootFolder={rootDirHandle} onFileClick={onFileClick} />
+            ) : (
+                <>
+                    <button onClick={openDirectory}>Open Dir</button>
+                    <p>{statusText}</p>
+                </>
             );
         }
     };
