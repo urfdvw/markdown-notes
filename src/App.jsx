@@ -7,6 +7,8 @@ import "ace-builds/src-noconflict/ext-language_tools";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import layout from "./layout.json";
+import build_config from "../build-config.json";
+layout.global.tabEnableFloat = !build_config["single-file"];
 
 function App() {
     const [model, setModel] = useState(FlexLayout.Model.fromJson(layout));
